@@ -1,3 +1,4 @@
+#include "WindowManager.h"
 #include "Entity.h"
 #include "Level.h"
 #include <iostream>
@@ -16,17 +17,19 @@ int main()
     };
 
     auto level1 = new Level(level1Vector);
+
     std::pair<int, int> firstPlayerCoordinates{ 1, 1 };
     std::pair<int, int> secondPlayerCoordinates{ 2, 2 };
+
     level1->editLevel(player->getName(), player->getCharacter(), firstPlayerCoordinates);
 
-    level1->printLevel();
+    WindowManager().printLevel(level1);
 
     std::cout << "\n";
 
     level1->editLevel(player->getName(), player->getCharacter(), secondPlayerCoordinates);
 
-    level1->printLevel();
+    WindowManager().printLevel(level1);
 
     return 0;
 }

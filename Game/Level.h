@@ -18,10 +18,10 @@ public:
 
 	void setEntityPosition(std::string entityName, std::pair<int, int> coordinates);
 
+	std::vector<std::vector<char>> getLevel() { return _levelVector; }
+
 private:
 	std::vector<std::vector<char>> _levelVector;
-
-	std::vector<std::vector<char>> _getLevel() { return _levelVector; }
 
 	std::unordered_map<std::string, std::pair<int, int>> _entityPositions;
 };
