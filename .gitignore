@@ -23,7 +23,10 @@ mono_crash.*
 [Rr]eleases/
 x64/
 x86/
+<<<<<<< HEAD
 [Ww][Ii][Nn]32/
+=======
+>>>>>>> 5f27a44f383ea50c0f6a7e1e8e82204b5b7579e1
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
@@ -62,9 +65,12 @@ project.lock.json
 project.fragment.lock.json
 artifacts/
 
+<<<<<<< HEAD
 # ASP.NET Scaffolding
 ScaffoldingReadMe.txt
 
+=======
+>>>>>>> 5f27a44f383ea50c0f6a7e1e8e82204b5b7579e1
 # StyleCop
 StyleCopReport.xml
 
@@ -141,9 +147,12 @@ _TeamCity*
 .axoCover/*
 !.axoCover/settings.json
 
+<<<<<<< HEAD
 # Coverlet is a free, cross platform Code Coverage Tool
 coverage*[.json, .xml, .info]
 
+=======
+>>>>>>> 5f27a44f383ea50c0f6a7e1e8e82204b5b7579e1
 # Visual Studio code coverage results
 *.coverage
 *.coveragexml
