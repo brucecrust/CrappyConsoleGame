@@ -11,3 +11,8 @@ void WindowManager::printLevel(Level* level)
 		std::cout << "\n";
 	}
 }
+
+void WindowManager::clearWindow()
+{
+	std::cout << std::string(25, '\n');
+}

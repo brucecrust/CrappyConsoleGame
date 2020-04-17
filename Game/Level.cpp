@@ -9,9 +9,15 @@ void Level::editLevel(std::string entityName, char character, std::pair<int, int
 {
 	_levelVector[_entityPositions[entityName].first][_entityPositions[entityName].second] = '-';
 
-	_levelVector[coordinates.first][coordinates.second] = character;
+	std::pair<int, int> updatedCoordinates = {
+	_entityPositions[entityName].first + coordinates.first,
+	_entityPositions[entityName].second + coordinates.second
+	};
 
-	setEntityPosition(entityName, coordinates);
+	_levelVector[_entityPositions[entityName].first+coordinates.first]
+		[_entityPositions[entityName].second+coordinates.second] = character;
+
+	setEntityPosition(entityName, updatedCoordinates);
 }
 
 std::pair<int, int> Level::getEntityPosition(std::string entityName)

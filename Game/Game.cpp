@@ -1,12 +1,12 @@
 #include "WindowManager.h"
-#include "Entity.h"
+#include "Player.h"
 #include "Level.h"
 #include <iostream>
 #include <vector>
 
 int main()
 {
-    auto player = new Entity("Bryce", 'B');
+    auto player = new Player("Bryce", 'B');
 
     std::vector<std::vector<char>> level1Vector = {
         {'-', '-', '-', '-', '-'},
@@ -18,18 +18,20 @@ int main()
 
     auto level1 = new Level(level1Vector);
 
-    std::pair<int, int> firstPlayerCoordinates{ 1, 1 };
-    std::pair<int, int> secondPlayerCoordinates{ 2, 2 };
+    std::pair<int, int> firstPlayerPosition = { 1, 1 };
+    level1->editLevel(player->getName(), player->getCharacter(), firstPlayerPosition);
 
-    level1->editLevel(player->getName(), player->getCharacter(), firstPlayerCoordinates);
+    WindowManager().clearWindow();
+    for (;;)
+    {
+        WindowManager().printLevel(level1);
 
-    WindowManager().printLevel(level1);
+        std::pair <int, int> movementCoordinates = player->move();
 
-    std::cout << "\n";
+        level1->editLevel(player->getName(), player->getCharacter(), movementCoordinates);
 
-    level1->editLevel(player->getName(), player->getCharacter(), secondPlayerCoordinates);
-
-    WindowManager().printLevel(level1);
+        WindowManager().clearWindow();
+    }
 
     return 0;
 }

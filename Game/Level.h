@@ -8,8 +8,6 @@ class Level
 public:
 	Level(std::vector<std::vector<char>> levelVector);
 
-	void printLevel();
-
 	void editLevel(std::string entityName, char character, std::pair<int, int> coordinates);
 
 	std::unordered_map <std::string, std::pair<int, int>> getEntityPositions() { return _entityPositions; }
