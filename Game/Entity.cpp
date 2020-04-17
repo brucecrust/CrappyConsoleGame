@@ -1,7 +1,13 @@
 #include "Entity.h"
 
-Entity::Entity(std::string name, char eCharacter)
+Entity::Entity()
 {
-	_name = name;
-	_eCharacter = eCharacter;
+	Entity::name = "Default";
+	Entity::entityCharacter = 'D';
+}
+
+Entity::Entity(std::string name, char entityCharacter)
+{
+	Entity::name = name;
+	Entity::entityCharacter = entityCharacter;
 }

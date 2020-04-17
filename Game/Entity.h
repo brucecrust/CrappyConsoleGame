@@ -5,20 +5,21 @@
 class Entity
 {
 public:
-	Entity(std::string name, char eCharacter);
+	Entity();
+	Entity(std::string name, char entityCharacter);
 
-	std::string getName() { return _name; }
-	char getCharacter() { return _eCharacter; }
-	int getHealth() { return _health; }
+	std::string getName() { return name; }
+	char getCharacter() { return entityCharacter; }
+	int getHealth() { return health; }
 
-	void setHealth(int modifier) { _health += modifier; }
+	void modifyHealth(int modifier) { health += modifier; }
 
 private:
-	std::string _name;
-	char _eCharacter;
+	std::string name;
+	char entityCharacter;
 
-	int _health;
+	int health;
 
-	bool _isAlive;
+	bool isAlive;
 };
 
