@@ -2,12 +2,12 @@
 
 Entity::Entity()
 {
-	Entity::name = "Default";
-	Entity::entityCharacter = 'D';
+	this->name = "Default";
+	this->entityCharacter = 'D';
 }
 
 Entity::Entity(std::string name, char entityCharacter)
 {
-	Entity::name = name;
-	Entity::entityCharacter = entityCharacter;
+	this->name = name;
+	this->entityCharacter = entityCharacter;
 }

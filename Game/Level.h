@@ -6,7 +6,7 @@
 class Level
 {
 public:
-	Level(std::vector<std::vector<char>> levelVector);
+	Level(std::vector<std::vector<char>> modLevelVector);
 
 	void editLevel(std::string entityName, char character, std::pair<int, int> coordinates);
 
@@ -17,6 +17,9 @@ public:
 	void setEntityPosition(std::string entityName, std::pair<int, int> coordinates);
 
 	std::vector<std::vector<char>> getLevel() { return levelVector; }
+
+	bool isOutOfBounds(std::pair<int, int> coordinates);
+	bool isCollidingWithCharacter(std::pair<int, int> coordinates, char entityCharacter);
 
 private:
 	std::vector<std::vector<char>> levelVector;
