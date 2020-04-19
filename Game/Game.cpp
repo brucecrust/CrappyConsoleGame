@@ -40,7 +40,7 @@ int main()
     }*/
 
     std::vector<std::string> acceptableInput = {
-        "firebolt", "fireball", "iceball", "icebolt"
+        "FIREBOLT", "FIreball", "iCeball", "icEBolt"
     };
     std::string message = "Which of the following spells would you like to cast?";
 

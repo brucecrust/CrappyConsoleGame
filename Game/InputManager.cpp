@@ -8,12 +8,34 @@ std::string InputManager::dialogue(std::vector<std::string> acceptableInput, std
 		std::cout << acceptableInput[i] << "\n";
 	}
 
+	for (int i = 0; i < acceptableInput.size(); i++)
+	{
+		std::transform(acceptableInput[i].begin(), acceptableInput[i].end(), acceptableInput[i].begin(),
+			[](char c)
+			{
+				return std::tolower(c);
+			}
+		);
+	}
+
+	for (int i = 0; i < acceptableInput.size(); i++)
+	{
+		std::cout << acceptableInput[i] << "\n";
+	}
+
 	for (;;)
 	{
 		std::string userInput;
 		std::cin >> userInput;
 
 		std::vector<std::string> userInputVector;
+
+		std::transform(userInput.begin(), userInput.end(), userInput.begin(),
+			[](char c)
+			{
+				return std::tolower(c);
+			}
+		);
 
 		for (int i = 0; i < acceptableInput.size(); i++)
 		{
