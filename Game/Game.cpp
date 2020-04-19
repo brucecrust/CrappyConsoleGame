@@ -1,4 +1,5 @@
 #include "WindowManager.h"
+#include "InputManager.h"
 #include "Player.h"
 #include "Level.h"
 #include <iostream>
@@ -27,7 +28,7 @@ int main()
     level1->editLevel(player->getName(), player->getCharacter(), firstPlayerPosition);
 
     WindowManager().clearWindow();
-    for (;;)
+    /*for (;;)
     {
         WindowManager().printLevel(level1);
 
@@ -36,7 +37,16 @@ int main()
         level1->editLevel(player->getName(), player->getCharacter(), movementCoordinates);
 
         WindowManager().clearWindow();
-    }
+    }*/
+
+    std::vector<std::string> acceptableInput = {
+        "firebolt", "fireball", "iceball", "icebolt"
+    };
+    std::string message = "Which of the following spells would you like to cast?";
+
+    std::string answer = InputManager().dialogue(acceptableInput, message);
+
+    std::cout << "The spell you wish to cast is: " << answer;
 
     return 0;
 }
