@@ -6,7 +6,7 @@ void WindowManager::printLevel(Level* level)
 	{
 		for (int y = 0; y < level->getLevel()[0].size(); y++)
 		{
-			std::cout << " " << level->getLevel()[x][y];
+			std::cout << " " << level->getLevel()[x][y]->getCharacter();
 		}
 		std::cout << "\n";
 	}

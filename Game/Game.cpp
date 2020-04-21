@@ -1,7 +1,10 @@
 #include "WindowManager.h"
 #include "InputManager.h"
+#include "EntityManager.h"
+
 #include "Player.h"
 #include "Level.h"
+
 #include <iostream>
 #include <vector>
 
@@ -9,36 +12,37 @@ int main()
 {
     auto player = new Player("Bryce", 'B');
 
-    std::vector<std::vector<char>> level1Vector = {
-        {'-', '-', '#', '-', '-'},
-        {'-', '-', '#', '-', '-'},
-        {'-', '-', '#', '-', '-'},
-        {'-', '-', '#', '-', '-'},
-        {'-', '-', '-', '-', '-'},
-        {'-', '-', '-', '-', '-'},
-        {'-', '-', '#', '-', '-'},
-        {'-', '-', '#', '-', '-'},
-        {'-', '-', '#', '-', '-'},
-        {'-', '-', '#', '-', '-'}
+    std::vector<std::vector<Entity*>> level1Vector = {
+        {floorTile, floorTile, wallTile, floorTile, floorTile},
+        {floorTile, floorTile, wallTile, floorTile, floorTile},
+        {floorTile, floorTile, wallTile, floorTile, floorTile},
+        {floorTile, floorTile, wallTile, floorTile, floorTile},
+        {floorTile, floorTile, floorTile, floorTile, floorTile},
+        {floorTile, floorTile, floorTile, floorTile, floorTile},
+        {floorTile, floorTile, wallTile, floorTile, floorTile},
+        {floorTile, floorTile, wallTile, floorTile, floorTile},
+        {floorTile, floorTile, wallTile, floorTile, floorTile},
+        {floorTile, floorTile, wallTile, floorTile, floorTile}
     };
 
     auto level1 = new Level(level1Vector);
 
     std::pair<int, int> firstPlayerPosition = { 1, 1 };
-    level1->editLevel(player->getName(), player->getCharacter(), firstPlayerPosition);
+    level1->editLevel(player, firstPlayerPosition);
 
     WindowManager().clearWindow();
-    /*for (;;)
+    for (;;)
     {
         WindowManager().printLevel(level1);
 
         std::pair <int, int> movementCoordinates = player->move();
 
-        level1->editLevel(player->getName(), player->getCharacter(), movementCoordinates);
+        level1->editLevel(player, movementCoordinates);
 
         WindowManager().clearWindow();
-    }*/
+    }
 
+    /*
     std::vector<std::string> acceptableInput = {
         "FIREBOLT", "FIreball", "iCeball", "icEBolt"
     };
@@ -47,6 +51,7 @@ int main()
     std::string answer = InputManager().dialogue(acceptableInput, message);
 
     std::cout << "The spell you wish to cast is: " << answer;
+    */
 
     return 0;
 }

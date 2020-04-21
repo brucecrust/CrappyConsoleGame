@@ -6,20 +6,13 @@ class Entity
 {
 public:
 	Entity();
-	Entity(std::string name, char entityCharacter);
+	Entity(std::string name, char character);
 
 	std::string getName() { return name; }
-	char getCharacter() { return entityCharacter; }
-	int getHealth() { return health; }
-
-	void modifyHealth(int modifier) { health += modifier; }
+	char getCharacter() { return character; }
 
 private:
 	std::string name;
-	char entityCharacter;
-
-	int health;
-
-	bool isAlive;
+	char character;
 };
 

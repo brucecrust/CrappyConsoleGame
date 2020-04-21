@@ -1,36 +1,32 @@
 #include "Level.h"
 
-Level::Level(std::vector<std::vector<char>> levelVector)
+Level::Level(std::vector<std::vector<Entity*>> levelVector)
 {
 	this->levelVector = levelVector;
 }
 
-void Level::editLevel(std::string entityName, char character, std::pair<int, int> coordinates)
+void Level::editLevel(Entity* entity, std::pair<int, int> coordinates)
 {
 	std::pair<int, int> updatedCoordinates = {
-		entityPositions[entityName].first + coordinates.first,
-		entityPositions[entityName].second + coordinates.second
+		entityPositions[entity].first + coordinates.first,
+		entityPositions[entity].second + coordinates.second
 	};
 
-	if (!isOutOfBounds(updatedCoordinates) && !isCollidingWithCharacter(updatedCoordinates, '#'))
+	if (!isOutOfBounds(updatedCoordinates) && !isCollidingWithEntity(wallTile, updatedCoordinates))
 	{
-		levelVector[entityPositions[entityName].first][entityPositions[entityName].second] = '-';
 
-		levelVector[entityPositions[entityName].first + coordinates.first]
-			[entityPositions[entityName].second + coordinates.second] = character;
+		levelVector[entityPositions[entity].first][entityPositions[entity].second] = floorTile;
 
-		setEntityPosition(entityName, updatedCoordinates);
+		levelVector[entityPositions[entity].first + coordinates.first]
+			[entityPositions[entity].second + coordinates.second] = entity;
+
+		setEntityPosition(entity, updatedCoordinates);
 	}
 }
 
-std::pair<int, int> Level::getEntityPosition(std::string entityName)
+void Level::setEntityPosition(Entity* entity, std::pair<int, int> coordinates)
 {
-	return entityPositions[entityName];
-}
-
-void Level::setEntityPosition(std::string entityName, std::pair<int, int> coordinates)
-{
-	entityPositions[entityName] = coordinates;
+	entityPositions[entity] = coordinates;
 }
 
 bool Level::isOutOfBounds(std::pair<int, int> coordinates)
@@ -49,9 +45,10 @@ bool Level::isOutOfBounds(std::pair<int, int> coordinates)
 	}
 }
 
-bool Level::isCollidingWithCharacter(std::pair<int, int> coordinates, char entityCharacter)
+bool Level::isCollidingWithEntity(Entity* entity, std::pair<int, int> coordinates)
 {
-	if (levelVector[coordinates.first][coordinates.second] == entityCharacter)
+
+	if (levelVector[coordinates.first][coordinates.second] == entity)
 	{
 		return true;
 	}
@@ -60,3 +57,4 @@ bool Level::isCollidingWithCharacter(std::pair<int, int> coordinates, char entit
 		return false;
 	}
 }
+

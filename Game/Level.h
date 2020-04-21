@@ -1,4 +1,8 @@
 #pragma once
+#include "EntityManager.h"
+
+#include "Entity.h"
+
 #include <vector>
 #include <iostream>
 #include <unordered_map>
@@ -6,23 +10,21 @@
 class Level
 {
 public:
-	Level(std::vector<std::vector<char>> modLevelVector);
+	Level(std::vector<std::vector<Entity*>> modLevelVector);
 
-	void editLevel(std::string entityName, char character, std::pair<int, int> coordinates);
-
-	std::unordered_map <std::string, std::pair<int, int>> getEntityPositions() { return entityPositions; }
+	void editLevel(Entity* entity, std::pair<int, int> coordinates);
 
 	std::pair<int, int> getEntityPosition(std::string entityName);
 
-	void setEntityPosition(std::string entityName, std::pair<int, int> coordinates);
+	void setEntityPosition(Entity* entity, std::pair<int, int> coordinates);
 
-	std::vector<std::vector<char>> getLevel() { return levelVector; }
+	std::vector<std::vector<Entity*>> getLevel() { return levelVector; }
 
 	bool isOutOfBounds(std::pair<int, int> coordinates);
-	bool isCollidingWithCharacter(std::pair<int, int> coordinates, char entityCharacter);
+	bool isCollidingWithEntity(Entity* entity, std::pair<int, int> coordinates);
 
 private:
-	std::vector<std::vector<char>> levelVector;
+	std::vector<std::vector<Entity*>> levelVector;
 
-	std::unordered_map<std::string, std::pair<int, int>> entityPositions;
+	std::unordered_map<Entity*, std::pair<int, int>> entityPositions;
 };
