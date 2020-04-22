@@ -48,7 +48,7 @@ bool Level::isOutOfBounds(std::pair<int, int> coordinates)
 bool Level::isCollidingWithEntity(Entity* entity, std::pair<int, int> coordinates)
 {
 
-	if (levelVector[coordinates.first][coordinates.second] == entity)
+	if (levelVector[coordinates.first][coordinates.second]->getName() == entity->getName())
 	{
 		return true;
 	}
