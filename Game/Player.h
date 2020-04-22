@@ -1,6 +1,7 @@
 #pragma once
 #include "Entity.h"
 #include <iostream>
+#include <Windows.h>
 
 class Player :
 	public Entity

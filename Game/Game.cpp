@@ -33,28 +33,25 @@ int main()
     std::pair<int, int> jeffsPosition = { 4, 1 };
     level1->placeEntityAtPosition(jeff, jeffsPosition);
 
+    bool playerMoved = false;
+    int c = 0;
+
     WindowManager().clearWindow();
+    WindowManager().printLevel(level1);
     for (;;)
     {
-        WindowManager().printLevel(level1);
-
         std::pair <int, int> movementCoordinates = player->move();
 
-        level1->editLevel(player, movementCoordinates);
+        if (movementCoordinates != std::pair<int, int> { 0, 0 })
+        {
+            c++;
+            std::cout << c << "\n";
 
-        WindowManager().clearWindow();
+            level1->editLevel(player, movementCoordinates);
+            WindowManager().clearWindow();
+            WindowManager().printLevel(level1);
+        }
     }
-
-    /*
-    std::vector<std::string> acceptableInput = {
-        "FIREBOLT", "FIreball", "iCeball", "icEBolt"
-    };
-    std::string message = "Which of the following spells would you like to cast?";
-
-    std::string answer = InputManager().dialogue(acceptableInput, message);
-
-    std::cout << "The spell you wish to cast is: " << answer;
-    */
 
     return 0;
 }
