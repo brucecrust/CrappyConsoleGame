@@ -30,6 +30,9 @@ int main()
     std::pair<int, int> firstPlayerPosition = { 1, 1 };
     level1->editLevel(player, firstPlayerPosition);
 
+    std::pair<int, int> jeffsPosition = { 4, 1 };
+    level1->placeEntityAtPosition(jeff, jeffsPosition);
+
     WindowManager().clearWindow();
     for (;;)
     {

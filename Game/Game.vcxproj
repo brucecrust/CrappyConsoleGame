@@ -159,6 +159,7 @@
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="NonPlayer.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="WindowManager.h" />
   </ItemGroup>

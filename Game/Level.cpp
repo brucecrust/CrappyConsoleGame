@@ -12,7 +12,10 @@ void Level::editLevel(Entity* entity, std::pair<int, int> coordinates)
 		entityPositions[entity].second + coordinates.second
 	};
 
-	if (!isOutOfBounds(updatedCoordinates) && !isCollidingWithEntity(wallTile, updatedCoordinates))
+	if (!isOutOfBounds(updatedCoordinates) &&
+		!isCollidingWithEntity(wallTile, updatedCoordinates) &&
+		!isCollidingWithEntity(jeff, updatedCoordinates)
+		)
 	{
 
 		levelVector[entityPositions[entity].first][entityPositions[entity].second] = floorTile;
@@ -22,6 +25,19 @@ void Level::editLevel(Entity* entity, std::pair<int, int> coordinates)
 
 		setEntityPosition(entity, updatedCoordinates);
 	}
+
+	if (isCollidingWithEntity(jeff, updatedCoordinates))
+	{
+		InputManager().dialogue(jeff->getAcceptableInput(), jeff->getDefaultMessage());
+	}
+}
+
+void Level::placeEntityAtPosition(Entity* entity, std::pair<int, int> coordinates)
+{
+	levelVector[entityPositions[entity].first + coordinates.first]
+		[entityPositions[entity].second + coordinates.second] = entity;
+
+	setEntityPosition(entity, coordinates);
 }
 
 void Level::setEntityPosition(Entity* entity, std::pair<int, int> coordinates)

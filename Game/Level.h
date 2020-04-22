@@ -1,5 +1,6 @@
 #pragma once
 #include "EntityManager.h"
+#include "InputManager.h"
 
 #include "Entity.h"
 
@@ -17,6 +18,8 @@ public:
 	std::pair<int, int> getEntityPosition(std::string entityName);
 
 	void setEntityPosition(Entity* entity, std::pair<int, int> coordinates);
+
+	void placeEntityAtPosition(Entity* entity, std::pair<int, int> coordinates);
 
 	std::vector<std::vector<Entity*>> getLevel() { return levelVector; }
 
