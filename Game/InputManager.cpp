@@ -18,11 +18,6 @@ std::string InputManager::dialogue(std::vector<std::string> acceptableInput, std
 		);
 	}
 
-	for (int i = 0; i < acceptableInput.size(); i++)
-	{
-		std::cout << acceptableInput[i] << "\n";
-	}
-
 	for (;;)
 	{
 		std::string userInput;
