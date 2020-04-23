@@ -1,3 +1,4 @@
+#include "olcConsoleGameEngine.h"
 #include "WindowManager.h"
 #include "InputManager.h"
 #include "EntityManager.h"
@@ -8,7 +9,7 @@
 #include <iostream>
 #include <vector>
 
-int main()
+void oldGame()
 {
     auto player = new Player("Bryce", 'B');
 
@@ -52,6 +53,48 @@ int main()
             WindowManager().printLevel(level1);
         }
     }
+}
+
+class Engine : public olcConsoleGameEngine
+{
+public:
+    Engine() {}
+
+    virtual bool OnUserCreate()
+    {
+        Fill(0, 0, ScreenWidth(), ScreenHeight(), PIXEL_SOLID, FG_WHITE);
+
+        return true;
+    }
+
+    virtual bool OnUserUpdate(float fElapsedTime)
+    {
+        int width = 0;
+        int height = 0;
+
+        if (width < ScreenWidth() || height < ScreenHeight())
+        {
+            for (int x = 0; x < ScreenWidth(); x++)
+            {
+                for (int y = 0; y < ScreenHeight(); y++)
+                {
+                    Draw(x, y, PIXEL_SOLID, FG_BLACK);
+                }
+            }
+
+            width++;
+            height++;
+        }
+
+        return true;
+    }
+};
+
+int main()
+{
+    Engine engine;
+    engine.ConstructConsole(100, 80, 12, 12);
+    engine.Start();
 
     return 0;
 }
