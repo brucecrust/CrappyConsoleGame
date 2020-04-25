@@ -4,11 +4,11 @@ std::pair<int, int> Player::move()
 {
 	std::pair<int, int> movementCoordinates; 
 
-	if (GetKeyState('W') & 0x8000)
+	if (GetKeyState(0x0057) & 0x8000)
 	{
 		movementCoordinates = { -1, 0 };
 	}
-	else if (GetKeyState('S') & 0x8000)
+	else if (GetKeyState(0x0053) & 0x8000)
 	{
 		movementCoordinates = { 1, 0 };
 	}
