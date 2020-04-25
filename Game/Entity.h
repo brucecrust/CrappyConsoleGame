@@ -6,13 +6,13 @@ class Entity
 {
 public:
 	Entity();
-	Entity(std::string name, char character);
+	Entity(std::string name, short character);
 
 	std::string getName() { return name; }
-	char getCharacter() { return character; }
+	short getCharacter() { return character; }
 
 private:
 	std::string name;
-	char character;
+	short character;
 };
 
