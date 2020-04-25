@@ -30,6 +30,8 @@ void Level::editLevel(Entity* entity, std::pair<int, int> coordinates)
 	{
 		InputManager().dialogue(jeff->getAcceptableInput(), jeff->getDefaultMessage());
 	}
+
+	isDirty = true;
 }
 
 void Level::placeEntityAtPosition(Entity* entity, std::pair<int, int> coordinates)

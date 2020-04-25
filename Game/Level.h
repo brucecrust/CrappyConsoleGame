@@ -6,16 +6,18 @@
 
 #include <vector>
 #include <iostream>
-#include <unordered_map>
+#include <map>
 
 class Level
 {
 public:
+	bool isDirty = true;
+
 	Level(std::vector<std::vector<Entity*>> modLevelVector);
 
 	void editLevel(Entity* entity, std::pair<int, int> coordinates);
 
-	std::pair<int, int> getEntityPosition(std::string entityName);
+	std::pair<int, int> getEntityPosition(Entity* entity) { return entityPositions[entity]; }
 
 	void setEntityPosition(Entity* entity, std::pair<int, int> coordinates);
 
@@ -29,5 +31,5 @@ public:
 private:
 	std::vector<std::vector<Entity*>> levelVector;
 
-	std::unordered_map<Entity*, std::pair<int, int>> entityPositions;
+	std::map<Entity*, std::pair<int, int>> entityPositions;
 };

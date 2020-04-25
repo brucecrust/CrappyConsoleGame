@@ -65,6 +65,8 @@ public:
     std::vector<std::vector<Entity*>> level1Vector;
     Level* level1;
 
+    std::pair<int, int> prevMousePos;
+
     virtual bool OnUserCreate()
     {
         for (int x = 0; x < 50; x++)
@@ -122,14 +124,19 @@ public:
             }
             level1->editLevel(player, movementCoordinates);
         }
-
-        for (int x = 0; x < level1->getLevel()[0].size(); x++)
+        if (m_mousePosX != prevMousePos.first || m_mousePosY != prevMousePos.second)
         {
-            for (int y = 0; y < level1->getLevel().size(); y++)
-            {
-                Draw(x, y, level1->getLevel()[y][x]->getCharacter());
-            }
+            Draw(prevMousePos.first, prevMousePos.second, PIXEL_SOLID, FG_WHITE);
+            Draw(level1->getEntityPosition(player).first, level1->getEntityPosition(player).second, player->getCharacter());
+            Draw(m_mousePosX, m_mousePosY, PIXEL_HALF, FG_BLUE);
+
+
         }
+
+        prevMousePos.first = m_mousePosX;
+        prevMousePos.second = m_mousePosY;
+
+        level1->isDirty = false;
 
         return true;
     }
